@@ -1,0 +1,6 @@
+[
+    {
+        "file": "/opt/airflow/data/lms_loan_daily.csv",
+        "status": "ready"
+    }
+]

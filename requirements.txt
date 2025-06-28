@@ -1,9 +1,27 @@
-jupyterlab==4.3.5
-numpy==2.2.2
-pandas==2.2.3
-matplotlib==3.10.0
-seaborn==0.13.2
-scipy==1.15.1
-scikit-learn==1.6.1
-pyspark==3.5.5
-tqdm==4.67.1
+# Core data processing and visualization libraries
+jupyterlab==4.3.5         # Interactive development environment for Jupyter notebooks
+numpy             # Fundamental package for scientific computing
+pandas             # Data manipulation and analysis library
+matplotlib       # Comprehensive visualization library
+seaborn         # Statistical data visualization based on matplotlib
+scipy             # Scientific computing library
+scikit-learn      # Machine learning library
+
+# Big data processing
+pyspark           # Apache Spark Python API for big data processing
+
+# Apache Arrow for Spark optimization
+pyarrow==18.1.0           # Required for PySpark Arrow optimization (minimum 4.0.0 for PySpark 3.5.x)
+
+# Extra preprocessing and utilities
+holidays==0.74            # Library for working with holidays
+python-dateutil==2.9.0    # Date utilities for lab-style date handling
+tqdm==4.67.1              # Progress bars
+
+# Machine Learning - Tree Models
+lightgbm==4.5.0           # Light Gradient Boosting Machine (main model in original code)
+
+
+# SynapseML
+synapseml==1.0.4          # Microsoft Synapse ML library
+xgboost

@@ -1,0 +1,47 @@
+FROM python:3.10-slim
+
+USER root
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 安装 Java 和必要工具
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        openjdk-17-jdk-headless \
+        procps \
+        bash \
+        g++ \
+        libgomp1 \
+        curl && \
+    rm -rf /var/lib/apt/lists/* && \
+    ln -sf /bin/bash /bin/sh && \
+    mkdir -p /usr/lib/jvm/java-17-openjdk-amd64/bin && \
+    ln -sf "$(which java)" /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH=$PATH:$JAVA_HOME/bin
+
+# 安装 Spark
+RUN curl -L -o /tmp/spark.tgz https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3-scala2.13.tgz && \
+    tar -xz -C /opt/ -f /tmp/spark.tgz && \
+    mv /opt/spark-3.5.0-bin-hadoop3-scala2.13 /opt/spark && \
+    rm /tmp/spark.tgz
+
+ENV SPARK_HOME=/opt/spark
+ENV PATH=$PATH:$SPARK_HOME/bin
+
+# 设置工作目录
+WORKDIR /app
+
+# 安装 Python 依赖
+COPY requirements_inference.txt ./
+RUN pip install --no-cache-dir -r requirements_inference.txt
+
+# 拷贝代码
+COPY . .
+
+# 默认启动推理脚本
+CMD ["python", "run_inference.py"]
+
+# 可挂载数据目录
+VOLUME /app

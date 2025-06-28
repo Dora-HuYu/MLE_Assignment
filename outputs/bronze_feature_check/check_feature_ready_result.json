@@ -1,0 +1,14 @@
+[
+    {
+        "file": "/opt/airflow/data/feature_clickstream.csv",
+        "status": "ready"
+    },
+    {
+        "file": "/opt/airflow/data/features_attributes.csv",
+        "status": "ready"
+    },
+    {
+        "file": "/opt/airflow/data/features_financials.csv",
+        "status": "ready"
+    }
+]

@@ -1,0 +1,22 @@
+# 核心科学计算
+numpy==2.2.2                   # 必须指定 2.x，避免后续 NumPy ABI 变化
+pandas>=2.2.0                  # 确保兼容 NumPy 2.x
+scipy==1.15.1                  # NumPy 2.x 兼容版
+scikit-learn==1.6.1            # 确保兼容 NumPy 2.x 的 scikit-learn（1.5+ 是支持 NumPy 2.x 的第一个版本）
+
+# 可视化 (可选，如有需要)
+matplotlib
+seaborn
+
+# LightGBM (⚠️ 注意)
+lightgbm==4.5.0                # 官方未声明对 NumPy 2.x 完全支持，需你验证推理可否正常
+xgboost
+# 实用工具
+holidays==0.74
+python-dateutil==2.9.0
+tqdm==4.67.1
+pyspark==3.5.5
+pyarrow==18.1.0
+
+synapseml==1.0.4 
+
